@@ -142,8 +142,8 @@ serveElm path =
       modifyResponse (setContentType "text/html")
       result <- liftIO $ compile path
       case result of 
-        Right builder -> liftIO $ return $ ()
-        Left builder -> liftIO $ putStrLn "Fail"
+        Right builder -> liftIO $ play "Happy.ogg"
+        Left builder -> liftIO $ play "Sad.ogg"
       case result of
         Right builder ->
           writeBuilder builder

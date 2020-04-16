@@ -9,8 +9,6 @@ import Control.Concurrent
 
 import Sound.ProteaAudio
 
-filename = "audio/Example.ogg"
-
 waitPayback :: IO ()
 waitPayback = do
   n <- soundActive
@@ -18,8 +16,8 @@ waitPayback = do
     threadDelay 1000000
     waitPayback
 
-play :: IO ()
-play = do
+play filename = do
+    putStrLn filename
     --args <- getArgs
     --filename <- case args of
     --  a : _ -> pure a
