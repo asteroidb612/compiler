@@ -35,6 +35,7 @@ main =
     [ repl
     , init
     , reactor
+    , r2d2
     , make
     , install
     , bump
@@ -128,6 +129,33 @@ interpreter =
     , _examples = \_ -> return ["node","nodejs"]
     }
 
+
+
+-- R2D2
+
+
+r2d2 :: Terminal.Command
+r2d2 =
+  let
+    summary =
+      "R2D2 will compile code with a click. It opens a file viewer in your browser, and\
+      \ when you click on an Elm file, it compiles and you see the result."
+
+    details =
+      "The `r2d2` command starts a local server on your computer:"
+
+    example =
+      reflow
+        "After running that r2d2command, you would have a server at <http://localhost:8000>\
+        \ that helps with development. It shows your files like a file viewer. If you\
+        \ click on an Elm file, it will compile it for you! And you can just press\
+        \ the refresh button in the browser to recompile things."
+
+    reactorFlags =
+      flags Develop.Flags
+        |-- flag "port" port_ "The port of the server (default: 8000)"
+  in
+  Terminal.Command "r2d2" (Common summary) details example noArgs reactorFlags Develop.run
 
 
 -- REACTOR
