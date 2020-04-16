@@ -32,6 +32,7 @@ import qualified Reporting
 import qualified Reporting.Exit as Exit
 import qualified Reporting.Task as Task
 import qualified Stuff
+import Audio 
 
 
 
@@ -140,6 +141,9 @@ serveElm path =
   do  guard (takeExtension path == ".elm")
       modifyResponse (setContentType "text/html")
       result <- liftIO $ compile path
+      case result of 
+        Right builder -> ()
+        Left builder -> Audio.play
       case result of
         Right builder ->
           writeBuilder builder

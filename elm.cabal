@@ -47,6 +47,7 @@ Executable elm
         builder/src
         terminal/impl
         terminal/src
+        audio
 
     other-extensions:
         TemplateHaskell
@@ -202,6 +203,8 @@ Executable elm
         Type.UnionFind
         Paths_elm
 
+        Audio
+
     Build-depends:
         ansi-terminal >= 0.8 && < 0.9,
         ansi-wl-pprint >= 0.6.8 && < 0.7,
@@ -235,4 +238,5 @@ Executable elm
         unordered-containers,
         utf8-string,
         vector,
-        zip-archive
+        zip-archive,
+        proteaaudio >= 0.7.1.0
